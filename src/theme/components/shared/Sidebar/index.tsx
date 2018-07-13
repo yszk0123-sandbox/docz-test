@@ -1,9 +1,7 @@
-import './ads'
-
-import * as React from 'react'
-import { Component, Fragment, SFC } from 'react'
-import { Docs, Entry, Link as BaseLink } from 'docz'
-import styled from 'react-emotion'
+import { Docs, Entry, Link as BaseLink } from 'docz';
+import * as React from 'react';
+import { Component, Fragment, SFC } from 'react';
+import styled from 'react-emotion';
 
 const SidebarWrapper = styled('div')`
   width: 280px;
@@ -12,7 +10,7 @@ const SidebarWrapper = styled('div')`
   padding: 50px 40px 50px 0;
   margin-right: 60px;
   border-right: 1px solid ${p => p.theme.colors.grayLight};
-`
+`;
 
 const Wrapper = styled('div')`
   position: -webkit-sticky;
@@ -21,7 +19,7 @@ const Wrapper = styled('div')`
   display: flex;
   flex-direction: column;
   width: 100%;
-`
+`;
 
 const Link = styled(BaseLink)`
   font-size: 18px;
@@ -36,7 +34,7 @@ const Link = styled(BaseLink)`
   &:hover {
     color: ${p => p.theme.colors.ocean};
   }
-`
+`;
 
 const SmallLink = styled('a')`
   font-size: 16px;
@@ -47,17 +45,17 @@ const SmallLink = styled('a')`
   &:visited {
     color: ${p => p.theme.colors.grayDark};
   }
-`
+`;
 
 const Submenu = styled('div')`
   display: flex;
   flex-direction: column;
   margin: 5px 0;
-`
+`;
 
 interface MenuProps {
-  doc: Entry
-  active: string
+  doc: Entry;
+  active: string;
 }
 
 const Menu: SFC<MenuProps> = ({ doc, active }) => (
@@ -77,42 +75,21 @@ const Menu: SFC<MenuProps> = ({ doc, active }) => (
       </Submenu>
     )}
   </Fragment>
-)
+);
 
 interface SidebarProps {
-  parent: string
-  active: string
+  parent: string;
+  active: string;
 }
 
 export class Sidebar extends Component<SidebarProps> {
-  public addCarbonAds = () => {
-    const wrapper = document.getElementById('ads')
-    const script = document.createElement('script')
-
-    script.setAttribute('async', '')
-    script.setAttribute('type', 'text/javascript')
-    script.setAttribute(
-      'src',
-      '//cdn.carbonads.com/carbon.js?serve=CK7D6237&placement=wwwdoczsite'
-    )
-    script.setAttribute('id', '_carbonads_js')
-
-    if (wrapper) {
-      wrapper.appendChild(script)
-    }
-  }
-
-  public componentDidMount(): void {
-    this.addCarbonAds()
-  }
-
   public render(): React.ReactNode {
-    const { active, parent } = this.props
+    const { active, parent } = this.props;
 
     return (
       <Docs>
         {({ docs: allDocs }) => {
-          const docs = allDocs.filter(doc => doc.parent === parent)
+          const docs = allDocs.filter(doc => doc.parent === parent);
 
           return (
             <SidebarWrapper>
@@ -120,12 +97,11 @@ export class Sidebar extends Component<SidebarProps> {
                 {docs.map(doc => (
                   <Menu key={doc.id} doc={doc} active={active} />
                 ))}
-                <div id="ads" />
               </Wrapper>
             </SidebarWrapper>
-          )
+          );
         }}
       </Docs>
-    )
+    );
   }
 }
