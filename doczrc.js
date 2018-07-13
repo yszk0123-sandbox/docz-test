@@ -13,12 +13,14 @@ const modifyBundlerConfig = config => {
     '@styles': `${SRC}/theme/styles`
   });
 
+  /* TODO
   config.plugins.push(
     new FaviconsWebpackPlugin({
       logo: `${PUBLIC}/images/favicon.png`,
       inject: true
     })
   );
+  */
 
   return config;
 };

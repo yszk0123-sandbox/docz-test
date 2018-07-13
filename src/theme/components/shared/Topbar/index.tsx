@@ -1,9 +1,7 @@
-import * as React from 'react'
-import styled, { css } from 'react-emotion'
-import { Docs, Link } from 'docz'
-import { Github } from 'react-feather'
-
-import { Container, Logo } from '@components/ui'
+import { Container } from '@components/ui';
+import { Docs, Link } from 'docz';
+import * as React from 'react';
+import styled, { css } from 'react-emotion';
 
 const Wrapper = styled('div')`
   height: 60px;
@@ -16,15 +14,11 @@ const Wrapper = styled('div')`
     justify-content: space-between;
     height: 100%;
   }
-`
-
-const LogoLink = styled(Link)`
-  height: 30px;
-`
+`;
 
 const Menu = styled('div')`
   display: flex;
-`
+`;
 
 const linkStyle = (p: any) => css`
   color: ${p.theme.colors.main};
@@ -39,12 +33,12 @@ const linkStyle = (p: any) => css`
     color: ${p.theme.colors.main};
     opacity: 1;
   }
-`
+`;
 
 const MenuLink = styled(Link)`
   ${linkStyle};
   margin: 0 10px;
-`
+`;
 
 const IconLink = styled('a')`
   ${linkStyle};
@@ -56,21 +50,18 @@ const IconLink = styled('a')`
   svg {
     stroke: ${p => p.theme.colors.main};
   }
-`
+`;
 
 export const isActive = (route: string) => (match: any, location: any) =>
   (match && match.url === location.pathname) ||
-  (location.pathname.startsWith(route) && route !== '/')
+  (location.pathname.startsWith(route) && route !== '/');
 
 export const Topbar = () => (
   <Wrapper>
     <Container>
-      <LogoLink to="/">
-        <Logo height={30} />
-      </LogoLink>
       <Docs>
         {({ docs: allDocs }) => {
-          const docs = allDocs.filter(doc => !doc.parent)
+          const docs = allDocs.filter(doc => !doc.parent);
 
           return (
             <Menu>
@@ -83,16 +74,10 @@ export const Topbar = () => (
                   {doc.name}
                 </MenuLink>
               ))}
-              <IconLink
-                href="https://github.com/pedronauck/docz"
-                target="_blank"
-              >
-                <Github width={30} />
-              </IconLink>
             </Menu>
-          )
+          );
         }}
       </Docs>
     </Container>
   </Wrapper>
-)
+);
