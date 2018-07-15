@@ -9,7 +9,10 @@
   },
   "devDependencies": {
     "docz": "^0.5.8",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "remark-emoji": "^2.0.1",
+    "remark-external-links": "^2.0.0",
+    "remark-images": "^0.8.1"
   },
   "dependencies": {
     "docz-theme-default": "^0.5.8"
